@@ -21,18 +21,32 @@ async function generateTestProducts() {
 
   const productsDB = [
     {
-      name: "happy cracks",
+      name: "belva biscuits",
       quantity: 10,
       price: 1.00,
       category: categories.BISCUITS,
-      photo: "/logo515.png"
+      photo: "belva_biscuits_photo.jpeg"
+    },
+    {
+      name: "arnotts biscuits",
+      quantity: 10,
+      price: 1.00,
+      category: categories.BISCUITS,
+      photo: "arnotts_bs_photo.jpeg"
+    },
+    {
+      name: "hide & seek biscuits",
+      quantity: 10,
+      price: 1.00,
+      category: categories.BISCUITS,
+      photo: "hs_bs_photo.jpeg"
     },
     {
       name: "omo",
       quantity: 50,
       price: 3.00,
       category: categories.SOAPS_AND_DETERGENTS,
-      photo: "/logo515.png",
+      photo: "omo_photo.jpeg",
       sku: "S"
     },
     {
@@ -40,7 +54,7 @@ async function generateTestProducts() {
       quantity: 50,
       price: 13.00,
       category: categories.SOAPS_AND_DETERGENTS,
-      photo: "/logo515.png",
+      photo: "omo_photo.jpeg",
       sku: "M"
     },
     {
@@ -48,7 +62,7 @@ async function generateTestProducts() {
       quantity: 50,
       price: 23.00,
       category: categories.SOAPS_AND_DETERGENTS,
-      photo: "/logo515.png",
+      photo: "omo_photo.jpeg",
       sku: "L"
     },
     {
@@ -56,15 +70,15 @@ async function generateTestProducts() {
       quantity: 50,
       price: 3.00,
       category: categories.SOAPS_AND_DETERGENTS,
-      photo: "/logo515.png",
-      sku: "s"
+      photo: "can_coke_photo.jpeg",
+      sku: "S"
     },
     {
       name: "coca-cola",
       quantity: 50,
       price: 3.00,
       category: categories.SOAPS_AND_DETERGENTS,
-      photo: "/logo515.png",
+      photo: "coke_photo.jpeg",
       sku: "S"
     },
     {
@@ -72,7 +86,7 @@ async function generateTestProducts() {
       quantity: 50,
       price: 13.00,
       category: categories.SOAPS_AND_DETERGENTS,
-      photo: "/logo515.png",
+      photo: "coke_photo.jpeg",
       sku: "M"
     },
     {
@@ -80,7 +94,7 @@ async function generateTestProducts() {
       quantity: 50,
       price: 23.00,
       category: categories.SOAPS_AND_DETERGENTS,
-      photo: "/logo515.png",
+      photo: "coke_photo.jpeg",
       sku: "L"
     },
 
