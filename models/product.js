@@ -8,8 +8,8 @@ const productSchema = new Schema(
       required: true,
     },
     price: {
-        type: Number,
-        required: true,
+      type: Number,
+      required: true,
     },
     quantity: {
       type: Number,
@@ -20,17 +20,16 @@ const productSchema = new Schema(
     },
     sku: {
       type: String,
-      default: "N/A"
+      default: "N/A",
     },
     photo: {
-        type: String,
-    }
+      type: String,
+    },
   },
   {
     timestamps: true,
   },
 );
-
 
 const Product = mongoose.model("{Product", productSchema);
 module.exports = Product;

@@ -1,6 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const getProducts = require('../controllers/productController')
+const {
+  getProducts,
+  getProductById,
+} = require("../controllers/productController");
 // const { verifyUser } = require("../middlewares/auth");
 // const UserDataSource = require("../controllers/Users");
 // const Auth = require("../models/auth");
@@ -10,5 +13,6 @@ const getProducts = require('../controllers/productController')
 
 /* GET product listing. */
 router.get("/", async (req, res) => await getProducts(req, res));
+router.get("/:id", async (req, res) => await getProductById(req, res));
 
-module.exports = router
+module.exports = router;

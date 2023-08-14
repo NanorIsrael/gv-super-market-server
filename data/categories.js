@@ -1,8 +1,10 @@
 const categories = {
-    "BISCUITS": "BISCUITS",
-    "OILS": "OILS",
-    "DRINKS": "DRINKS",
-    "SOAPS_AND_DETERGENTS": "SOAPS AND DETERGENTS"
-}
+  SNACKS: "SNACKS",
+  OILS: "OILS",
+  BEVERAGES: "BEVERAGES",
+  SOAPS: "SOAPS",
+  DAIRY: "DAIRY",
+  CANNED_GOODS: "CANNED GOODS",
+};
 
-module.exports = categories
+module.exports = categories;

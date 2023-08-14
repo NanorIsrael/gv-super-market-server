@@ -3,16 +3,17 @@ const Product = require("../models/product");
 // const bcrypt = require("bcrypt");
 // const { generateAuthTokens } = require("./../services/tokenService");
 
-
 class ProductDataSource {
-    constructor() {
+  constructor() {}
 
-    }
+  async getAllProduct() {
+    return await Product.find({});
+  }
 
-    async getAllProduct() {
-        return await Product.find({})
-    }
+  async getProductById(id) {
+    return await Product.findOne({ _id: id });
+  }
 }
 
-const productsDB = new ProductDataSource()
-module.exports = {ProductDataSource, productsDB}
+const productsDB = new ProductDataSource();
+module.exports = { ProductDataSource, productsDB };

@@ -1,5 +1,5 @@
 require("dotenv").config();
-const categories = require('../data/categories')
+const categories = require("../data/categories");
 const { exit } = require("process");
 const Product = require("../models/product");
 // const user = require("../models/user");
@@ -7,7 +7,7 @@ const Product = require("../models/product");
 // const auth = require("../models/auth");
 const mongoose = require("mongoose");
 const url = process.env.MONGO_URI;
-console.log(url)
+console.log(url);
 
 async function generateTestProducts() {
   try {
@@ -23,81 +23,80 @@ async function generateTestProducts() {
     {
       name: "belva biscuits",
       quantity: 10,
-      price: 1.00,
-      category: categories.BISCUITS,
-      photo: "belva_biscuits_photo.jpeg"
+      price: 1.0,
+      category: categories.SNACKS,
+      photo: "belva_biscuits_photo.jpeg",
     },
     {
       name: "arnotts biscuits",
       quantity: 10,
-      price: 1.00,
-      category: categories.BISCUITS,
-      photo: "arnotts_bs_photo.jpeg"
+      price: 1.0,
+      category: categories.SNACKS,
+      photo: "arnotts_bs_photo.jpeg",
     },
     {
       name: "hide & seek biscuits",
       quantity: 10,
-      price: 1.00,
-      category: categories.BISCUITS,
-      photo: "hs_bs_photo.jpeg"
+      price: 1.0,
+      category: categories.SNACKS,
+      photo: "hs_bs_photo.jpeg",
     },
     {
       name: "omo",
       quantity: 50,
-      price: 3.00,
-      category: categories.SOAPS_AND_DETERGENTS,
+      price: 3.0,
+      category: categories.SOAPS,
       photo: "omo_photo.jpeg",
-      sku: "S"
+      sku: "S",
     },
     {
       name: "omo",
       quantity: 50,
-      price: 13.00,
-      category: categories.SOAPS_AND_DETERGENTS,
+      price: 13.0,
+      category: categories.SOAPS,
       photo: "omo_photo.jpeg",
-      sku: "M"
+      sku: "M",
     },
     {
       name: "omo",
       quantity: 50,
-      price: 23.00,
-      category: categories.SOAPS_AND_DETERGENTS,
+      price: 23.0,
+      category: categories.SOAPS,
       photo: "omo_photo.jpeg",
-      sku: "L"
+      sku: "L",
     },
     {
       name: "coca-cola",
       quantity: 50,
-      price: 3.00,
-      category: categories.SOAPS_AND_DETERGENTS,
+      price: 3.0,
+      category: categories.BEVERAGES,
       photo: "can_coke_photo.jpeg",
-      sku: "S"
+      sku: "S",
     },
     {
       name: "coca-cola",
       quantity: 50,
-      price: 3.00,
-      category: categories.SOAPS_AND_DETERGENTS,
+      price: 3.0,
+      category: categories.BEVERAGES,
       photo: "coke_photo.jpeg",
-      sku: "S"
+      sku: "S",
     },
     {
       name: "coca-cola",
       quantity: 50,
-      price: 13.00,
-      category: categories.SOAPS_AND_DETERGENTS,
+      price: 13.0,
+      category: categories.BEVERAGES,
       photo: "coke_photo.jpeg",
-      sku: "M"
+      sku: "M",
     },
     {
       name: "coca-cola",
       quantity: 50,
-      price: 23.00,
-      category: categories.SOAPS_AND_DETERGENTS,
+      price: 23.0,
+      category: categories.BEVERAGES,
       photo: "coke_photo.jpeg",
-      sku: "L"
+      sku: "L",
     },
-
   ];
 
   try {
