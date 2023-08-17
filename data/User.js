@@ -1,6 +1,6 @@
 const User = require("../models/user");
 const Auth = require("../models/auth");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const { generateAuthTokens } = require("./../services/tokenService");
 
 class UserDataSource {
@@ -68,6 +68,7 @@ class UserDataSource {
     try {
       // Compare the passddword using bcrypt
       const isMatch = await bcrypt.compare(password, user.password);
+
       if (isMatch) {
         const tokens = await generateAuthTokens(user._id);
         return tokens;

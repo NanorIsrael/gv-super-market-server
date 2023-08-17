@@ -13,6 +13,10 @@ class ProductDataSource {
   async getProductById(id) {
     return await Product.findOne({ _id: id });
   }
+  async updateProductById(id, updatedItem) {
+    const result = await Product.updateOne({ _id: id }, updatedItem);
+    return result;
+  }
 }
 
 const productsDB = new ProductDataSource();

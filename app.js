@@ -10,8 +10,9 @@ const mongoose = require("mongoose");
 const connect = mongoose.connect(process.env.MONGO_URI);
 // routes
 const indexRouter = require("./routes/index");
-// const userRouter = require("./routes/userRouter");
-const productRouter = require("./routes/products");
+const userRouter = require("./routes/userRouter");
+const customerRouter = require("./routes/customerRouter");
+const productRouter = require("./routes/productRouter");
 
 const app = express();
 // view engine setup
@@ -26,8 +27,9 @@ app.options("*", cors.corsWithOptions);
 app.use(cors.corsWithOptions);
 
 app.use("/", indexRouter);
-// app.use("/users", userRouter);
-app.use("/product", productRouter);
+app.use("/users", userRouter);
+app.use("/customers", customerRouter);
+app.use("/products", productRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -41,7 +43,7 @@ app.use(function (err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render("error");
+  res.json({ error: err.message });
 });
 
 connect.then(

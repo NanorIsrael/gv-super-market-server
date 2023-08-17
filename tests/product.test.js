@@ -18,23 +18,7 @@ describe("Super market products", () => {
     }
     ProductSource = new ProductDataSource();
     // products = {
-    //   quizQuestions: [
-    //     {
-    //       questionNumber: 1,
-    //       question: "Which of the following is the capital of Ghana.",
-    //       question_options: ["Temale", "Kumasi", "Accra", "None of the above"],
-    //       question_answer: "Accra",
-    //       selectedAnswer: "Kumasi",
-    //     },
-    //     {
-    //       questionNumber: 2,
-    //       question: "In which year did Ghana became independent.",
-    //       question_options: ["1997", "19957", "1967", "None of the above"],
-    //       selectedAnswer: "1957",
-    //     },
-    //   ],
-    //   accountId: new mongoose.Types.ObjectId(),
-    //   status: quizeStatus.COMPLETED,
+
     // };
   });
 
@@ -48,49 +32,28 @@ describe("Super market products", () => {
     await mongoose.disconnect();
   });
 
-  //   it("gets one quizes", async () => {
-  //     await generateTestQuizes();
-  //     const quizes = await QuizDataSource.getQuizQuestion();
-
-  //     expect(quizes).not.toBeNull();
-  //     expect(quizes.question_number).toBe(1);
-  //     expect(Object.keys(quizes.question_options)).toHaveLength(4);
-  //   });
-
   it("gets all products", async () => {
-    await generateTestQuizes();
+    await generateTestProducts();
     const product = await ProductSource.getAllProduct();
 
     expect(product.length).toBeGreaterThan(0);
-    // expect(quizes[0].question_options).toHaveLength(4);
   });
 
-  //   it("processes quiz results", async () => {
-  //     await generateTestQuizes();
+  it("updates a single product", async () => {
+    await generateTestProducts();
+    const products = await ProductSource.getAllProduct();
+    const testProduct = products[0];
 
-  //     const score = await QuizResultsDataSource.processScore(
-  //       quizTaker.quizQuestions,
-  //     );
-
-  //     await QuizResultsDataSource.processQuizResults(
-  //       quizTaker.status,
-  //       score,
-  //       quizTaker.accountId,
-  //       quizTaker.quizQuestions,
-  //     );
-  //     const queryUserQuizResults = await QuizResultsDataSource.getUserQuizResults(
-  //       quizTaker.accountId,
-  //     );
-
-  //     expect(queryUserQuizResults.userId).toEqual(quizTaker.accountId);
-  //     expect(queryUserQuizResults.quiz).toHaveLength(
-  //       quizTaker.quizQuestions.length,
-  //     );
-  //     expect(queryUserQuizResults.score).toEqual(10);
-  //   });
+    await ProductSource.updateProductById(testProduct._id, {
+      quantity: testProduct.quantity - 1,
+    });
+    const updatedProduct = await ProductSource.getProductById(testProduct._id);
+    expect(products.length).toBeGreaterThan(0);
+    expect(updatedProduct.quantity).toEqual(testProduct.quantity - 1);
+  });
 });
 
-const generateTestQuizes = async () => {
+const generateTestProducts = async () => {
   const testProducts = [
     {
       name: "happy cracks",

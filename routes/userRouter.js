@@ -1,11 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const { verifyUser } = require("../middlewares/auth");
-const UserDataSource = require("../controllers/Users");
+const User = require("../data/User");
 const Auth = require("../models/auth");
 const tokenTypes = require("../services/token");
 const authService = require("../services/tokenService");
-const user = new UserDataSource();
 
 /* GET users listing. */
 router.get("/", function (req, res) {
@@ -36,7 +35,7 @@ router.post("/tokens", async function (req, res, next) {
 
   try {
     const userData = req.body;
-    const result = await user.addUser(userData);
+    const result = await User.addUser(userData);
 
     if (!result.errors) {
       res.status(201).json({
@@ -88,7 +87,7 @@ router.post("/token", async function (req, res) {
     return;
   }
   try {
-    const results = await user.login(email, password);
+    const results = await User.login(email, password);
 
     if (!results.errors) {
       res.cookie("checker", results.refreshToken, {
@@ -121,7 +120,7 @@ router.post("/token", async function (req, res) {
 /* Log user out. */
 router.delete("/tokens", verifyUser, async function (req, res) {
   try {
-    const results = await user.logout(req.body.accountId);
+    const results = await User.logout(req.accountId);
     if (!results.errors) {
       res.status(201).json({
         ok: true,
@@ -144,7 +143,7 @@ router.delete("/tokens", verifyUser, async function (req, res) {
 /* update user access tokens. */
 router.put("/tokens", async function (req, res) {
   //  Todo: check for cookie and authorization
-
+  console.log(req.body.accessToken, req.headers);
   try {
     if (!req.body.accessToken || !req.headers.cookie) {
       return res.status(401).json({
@@ -195,8 +194,8 @@ router.put("/tokens", async function (req, res) {
 /* GET users listing. */
 router.get("/me", verifyUser, async function (req, res) {
   try {
-    const accountId = req.body.accountId;
-    const userResults = await user.getUserById(accountId);
+    const accountId = req.accountId;
+    const userResults = await User.getUserById(accountId);
 
     if (!userResults.errors) {
       res.status(201).json({

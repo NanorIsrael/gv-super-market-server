@@ -8,7 +8,6 @@ const getProducts = async (req, res, next) => {
       const updatedItem = Object.assign({}, item._doc, {
         isAvailable: item.quantity >= 1,
       });
-      console.log(updatedItem);
       return updatedItem;
     });
 

@@ -16,7 +16,7 @@ async function verifyUser(req, res, next) {
 
     if (tokenParts[0] === "Bearer" && tokenParts[1].match(/\S*\.\S*\.\S*/)) {
       const tokenData = await verifyToken(tokenParts[1], tokenTypes.ACCESS);
-      // if (tokenData)
+      // (tokenData)
       const userId = tokenData["userId"].toString();
 
       const user = await UserDataSource.findById(userId);
@@ -30,7 +30,7 @@ async function verifyUser(req, res, next) {
         });
       }
 
-      req.body.accountId = user._id;
+      req.accountId = user._id;
 
       next();
     } else {

@@ -2,9 +2,9 @@ require("dotenv").config();
 const categories = require("../data/categories");
 const { exit } = require("process");
 const Product = require("../models/product");
-// const user = require("../models/user");
+const Customer = require("../models/customer");
 // const quizResults = require("../models/quiz_results");
-// const auth = require("../models/auth");
+const User = require("../models/User");
 const mongoose = require("mongoose");
 const url = process.env.MONGO_URI;
 console.log(url);
@@ -100,6 +100,8 @@ async function generateTestProducts() {
   ];
 
   try {
+    // await User.collection.drop()
+    await Customer.collection.drop();
     await Product.collection.drop();
 
     for (let item of productsDB) {

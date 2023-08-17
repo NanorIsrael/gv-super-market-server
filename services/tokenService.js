@@ -30,10 +30,11 @@ async function generateAuthTokens(accountId) {
     accessTokenExpires,
     tokenType.ACCESS,
   );
+
   await saveToken(accessToken, accountId, accessTokenExpires, tokenType.ACCESS);
 
   const refreshTokenExpires = DateTime.now().plus({
-    days: Number(process.env.JWT_REFRESH_TOKEN_EXPIRES_IN_MINUTES),
+    days: Number(process.env.JWT_REFRESH_TOKEN_EXPIRES_IN_DAYS),
   });
 
   const refreshToken = generateToken(
